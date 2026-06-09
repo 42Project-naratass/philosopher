@@ -20,7 +20,7 @@ INCLUDE = -I.
 %.o: %.c
 	cc -c $(CFLAGS) $< -o $@
 
-$(NAME): $(OBJS) | philo.h
+$(NAME): $(OBJS) | philo.h err.h
 	cc $(CFLAGS) $(INCLUDE) $^ -o $@
 
 all: $(NAME)
