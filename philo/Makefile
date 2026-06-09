@@ -9,6 +9,7 @@ SRCS += utils/ft_strlen.c \
 		utils/is_digit.c \
 		utils/is_space.c \
 		utils/check_nums.c \
+		utils/exit.c \
 
 OBJS := $(SRCS:.c=.o)
 

@@ -7,10 +7,7 @@ int	main(int argc, char *argv[])
     {
 		if (!check_nums(argv[1]) || !check_nums(argv[2])
 			|| !check_nums(argv[3]) || !check_nums(argv[4]))
-		{
-			putstr_fd(INVALID_ARG, 2);
-			exit(1);
-		}
+		ft_exit(1);
 		int	number_of_philosophers = atoi(argv[0]);
 		int	time_to_die = atoi(argv[1]);
 		int	time_to_eat = atoi(argv[2]);
@@ -19,9 +16,6 @@ int	main(int argc, char *argv[])
 			number_of_times_each_philosopher_must_eat = atoi(argv[5]);
     }
 	else
-	{
-		putstr_fd(INVALID_ARG, 2);
-		exit(1);
-	}
+		ft_exit(1);
     return (0);
 }
