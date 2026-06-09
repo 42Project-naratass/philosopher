@@ -14,5 +14,7 @@ double	ft_atof(char *nbtr);
 double	ft_strtod(char *str, char **endptr);
 int		ft_atoi(char *nptr);
 bool	check_nums(char *str);
+int		is_digit(int c);
+bool	is_space(char c);
 
 #endif
