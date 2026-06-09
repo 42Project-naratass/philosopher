@@ -1,0 +1,7 @@
+#include "philo.h"
+
+void	ft_exit(int error_code)
+{
+	if (error_code == 1)
+		putstr_fd(INVALID_ARG, 2);
+}
