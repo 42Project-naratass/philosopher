@@ -7,6 +7,15 @@
 # include <stdbool.h>
 # include "err.h"
 
+typedef struct	s_config
+{
+	size_t	nums_philo;
+	size_t	time_die;
+	size_t	time_eat;
+	size_t	time_sleep;
+	size_t	min_eat;
+}			t_config;
+
 // utils
 size_t	ft_strlen(char *s);
 void	putstr_fd(char *str, int fd);

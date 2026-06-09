@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 void	ft_exit(int error_code)
 {
