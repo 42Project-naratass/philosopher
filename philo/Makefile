@@ -1,6 +1,11 @@
 NAME := philo
 
 SRCS := main.c
+SRCS += ft_strlen.c \
+		put_str_fd.c \
+		ft_atof.c \
+		ft_atoi.c \
+		ft_strtod.c \
 
 OBJS := $(SRCS.c=.o)
 
