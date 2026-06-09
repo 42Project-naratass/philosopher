@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 bool	check_nums(char *str)
 {

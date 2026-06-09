@@ -1,4 +1,4 @@
-#include "philo.c"
+#include "../philo.h"
 
 static void	beforedot(double *sum, char **nbtr)
 {

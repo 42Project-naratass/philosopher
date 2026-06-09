@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 void	putstr_fd(char *str, int fd)
 {

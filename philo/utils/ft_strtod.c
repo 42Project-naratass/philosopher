@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 static bool	is_inf(char *p, char **endptr)
 {
