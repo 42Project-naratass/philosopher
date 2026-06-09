@@ -16,5 +16,6 @@ int		ft_atoi(char *nptr);
 bool	check_nums(char *str);
 int		is_digit(int c);
 bool	is_space(char c);
+void	ft_exit(int error_code);
 
 #endif
