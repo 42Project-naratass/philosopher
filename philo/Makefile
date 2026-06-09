@@ -1,24 +1,27 @@
 NAME := philo
 
 SRCS := main.c
-SRCS += ft_strlen.c \
-		put_str_fd.c \
-		ft_atof.c \
-		ft_atoi.c \
-		ft_strtod.c \
+SRCS += utils/ft_strlen.c \
+		utils/putstr_fd.c \
+		utils/ft_atof.c \
+		utils/ft_atoi.c \
+		utils/ft_strtod.c \
+		utils/is_digit.c \
+		utils/is_space.c \
+		utils/check_nums.c \
 
-OBJS := $(SRCS.c=.o)
+OBJS := $(SRCS:.c=.o)
 
-CFLAGS := -Wall -Werro -Wextra
-CFLAGS += -g3 -fsanitized=address,undefined
+CFLAGS := -Wall -Werror -Wextra
+CFLAGS += -g3 -fsanitize=address,undefined
 
-INCLUDE = -I .
+INCLUDE = -I.
 
-%.o:%.c philo.h
-	cc $(CFLAGS) $(INCLUDE) -c $^ -o $@
+%.o: %.c
+	cc -c $(CFLAGS) $< -o $@
 
-$(NAME): $(OBJS)
-	cc $(CFLAGS) $(INCLUDE) -c $^ -o $@
+$(NAME): $(OBJS) | philo.h
+	cc $(CFLAGS) $(INCLUDE) $^ -o $@
 
 all: $(NAME)
 
