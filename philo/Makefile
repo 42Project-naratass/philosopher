@@ -11,6 +11,8 @@ SRCS += utils/ft_strlen.c \
 		utils/check_nums.c \
 		utils/ft_exit.c \
 
+SRCS += err_handle/thread_err.c \
+
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS := -Wall -Werror -Wextra

@@ -3,4 +3,6 @@
 
 # define INVALID_ARG "INVALID ARGUMENT\n"
 
+void	thread_err(int err_code);
+
 #endif 
