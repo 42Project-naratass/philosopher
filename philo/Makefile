@@ -13,6 +13,9 @@ SRCS += utils/ft_strlen.c \
 
 SRCS += err_handle/thread_err.c \
 
+SRCS += simulate/philo_simulate.c \
+		simulate/philo.c
+
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS := -Wall -Werror -Wextra

@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 void	thread_err(int err_code)
 {

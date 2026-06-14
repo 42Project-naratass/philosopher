@@ -14,6 +14,7 @@ int	main(int argc, char *argv[])
 		config.time_sleep = ft_atoi(argv[4]);
 		if (argc == 6)
 			config.min_eat = ft_atoi(argv[5]);
+		philo_simulate(&config);
     }
 	else
 		ft_exit(1);
