@@ -5,6 +5,7 @@
 # include <pthread.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <errno.h>
 # include "err.h"
 
 typedef struct	s_config
@@ -15,6 +16,9 @@ typedef struct	s_config
 	size_t	time_sleep;
 	size_t	min_eat;
 }			t_config;
+
+void	philo_simulate(t_config *config);
+void	*philo(void *arg);
 
 // utils
 size_t	ft_strlen(char *s);
