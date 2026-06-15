@@ -6,18 +6,19 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <errno.h>
+# include <sys/time.h>
 # include "err.h"
 
 typedef struct	s_config
 {
-	size_t	nums_philo;
-	size_t	time_die;
-	size_t	time_eat;
-	size_t	time_sleep;
-	size_t	min_eat;
-	size_t	ate_philo;
-	size_t	start_time;
-}			t_config;
+	size_t			nums_philo;
+	size_t			time_die;
+	size_t			time_eat;
+	size_t			time_sleep;
+	size_t			min_eat;
+	size_t			ate_philo;
+	struct timeval	start_time;
+}				t_config;
 
 void	philo_simulate(t_config *config);
 void	*philo(void *arg);

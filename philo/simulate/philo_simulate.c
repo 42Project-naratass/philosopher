@@ -6,6 +6,7 @@ void	philo_simulate(t_config *config)
 	size_t		i;
 
 	i = 0;
+	gettimeofday(&config->start_time, NULL);
 	while (i < config->nums_philo)
 	{
 		pthread_create(&philo_thread[i], NULL, philo, config);
