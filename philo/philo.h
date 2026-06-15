@@ -18,7 +18,7 @@ typedef struct	s_config
 	size_t			time_sleep;
 	size_t			min_eat;
 	size_t			times_eat;
-	struct timeval	start_time;
+	size_t			start_time;
 }				t_config;
 
 void	philo_simulate(t_config *config);
@@ -35,5 +35,6 @@ int		is_digit(int c);
 bool	is_space(char c);
 void	ft_exit(int error_code);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+size_t	get_time(void);
 
 #endif

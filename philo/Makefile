@@ -10,7 +10,8 @@ SRCS += utils/ft_strlen.c \
 		utils/is_space.c \
 		utils/check_nums.c \
 		utils/ft_exit.c \
-		utils/ft_memcpy.c
+		utils/ft_memcpy.c \
+		utils/get_time.c
 
 SRCS += err_handle/thread_err.c \
 
