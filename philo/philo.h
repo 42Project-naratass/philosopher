@@ -15,6 +15,7 @@ typedef struct	s_config
 	size_t	time_eat;
 	size_t	time_sleep;
 	size_t	min_eat;
+	size_t	ate_philo;
 }			t_config;
 
 void	philo_simulate(t_config *config);
