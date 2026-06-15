@@ -14,20 +14,20 @@ void	*philo(void *arg)
 {
 	t_config		*config;
 	struct timeval	time_since_last_eat;
-	size_t			elapsed;
 
 	config = arg;
 	gettimeofday(&time_since_last_eat, NULL);
 	while (true)
 	{
-		elapsed = elapsed_time(config->start_time);
+		
 		if (elapsed_time(time_since_last_eat) >= config->time_die)
 		{
-			printf("%zu philosophers died\n", elapsed);
+			printf("%zu philosophers%zu died\n", elapsed_time(config->start_time), config->philo_id);
+			free(config);
 			pthread_exit(NULL);
 			exit(0);
 		}
-		printf("%zu philosophers thinking\n", elapsed);
+		printf("%zu philosophers%zu thinking\n", elapsed_time(config->start_time), config->philo_id);
 	}
 	return (NULL);
 }

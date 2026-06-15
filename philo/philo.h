@@ -11,12 +11,13 @@
 
 typedef struct	s_config
 {
+	size_t			philo_id;
 	size_t			nums_philo;
 	size_t			time_die;
 	size_t			time_eat;
 	size_t			time_sleep;
 	size_t			min_eat;
-	size_t			ate_philo;
+	size_t			times_eat;
 	struct timeval	start_time;
 }				t_config;
 
@@ -33,5 +34,6 @@ bool	check_nums(char *str);
 int		is_digit(int c);
 bool	is_space(char c);
 void	ft_exit(int error_code);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
