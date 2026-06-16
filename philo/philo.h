@@ -12,20 +12,21 @@
 
 typedef struct	s_data
 {
-	pthread_t	*philos;
-	size_t		nums_philo;
-	size_t		time_die;
-	size_t		time_eat;
-	size_t		time_sleep;
-	size_t		min_eat;
-	size_t		times_eat;
-	size_t		start_time;
+	pthread_t		*philos;
+	size_t			nums_philo;
+	size_t			time_die;
+	size_t			time_eat;
+	size_t			time_sleep;
+	size_t			min_eat;
+	size_t			times_eat;
+	size_t			start_time;
+	bool			dead;
+	pthread_mutex_t	write;
 }	t_data;
 
 typedef struct	s_philo
 {
 	size_t	id;
-	bool	die;
 	bool	eating;
 	t_data	*data;
 }	t_philo;

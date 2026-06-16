@@ -23,7 +23,10 @@ static int	data_init(t_data *data, char *argv[], int argc)
 			return (1);
 		data->min_eat = ft_atoi(argv[5]);
 	}
+	data->dead = false;
 	data->philos = (pthread_t *) malloc(sizeof(pthread_t) * data->nums_philo);
+	if (!data->philos)
+		return (1);
 	return (0);
 }
 

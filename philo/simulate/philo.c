@@ -15,14 +15,21 @@ void	*philo(void *arg)
 
 	philo = arg;
 	time_since_last_eat = get_time();
-	while (true)
+	while (!philo->data->dead)
 	{
 		if (elapsed_time(time_since_last_eat) >= philo->data->time_die)
 		{
-			printf("%zu philosophers%zu died\n", elapsed_time(philo->data->start_time), philo->id);
+			pthread_mutex_lock(&philo->data->write);
+			if (!philo->data->dead)
+			{
+				printf("%zu philosophers%zu died\n", elapsed_time(philo->data->start_time), philo->id);
+				philo->data->dead = true;
+			}
+			pthread_mutex_unlock(&philo->data->write);
 			free(philo);
-			pthread_exit(NULL);
+			pthread_exit(0);
 		}
 	}
-	return (NULL);
+	free(philo);
+	pthread_exit(0);
 }
