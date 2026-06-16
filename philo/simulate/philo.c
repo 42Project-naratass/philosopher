@@ -10,21 +10,21 @@ static size_t	elapsed_time(size_t t0)
 
 void	*philo(void *arg)
 {
-	t_config	*config;
-	size_t		time_since_last_eat;
+	t_philo	*philo;
+	size_t	time_since_last_eat;
 
-	config = arg;
+	philo = arg;
 	time_since_last_eat = get_time();
 	while (true)
 	{	
-		if (elapsed_time(time_since_last_eat) >= config->time_die)
+		if (elapsed_time(time_since_last_eat) >= philo->data->time_die)
 		{
-			printf("%zu philosophers%zu died\n", elapsed_time(config->start_time), config->philo_id);
-			free(config);
+			printf("%zu philosophers%zu died\n", elapsed_time(philo->data->start_time), philo->id);
+			free(philo);
 			pthread_exit(NULL);
 			exit(0);
 		}
-		printf("%zu philosophers%zu thinking\n", elapsed_time(config->start_time), config->philo_id);
+		printf("%zu philosophers%zu thinking\n", elapsed_time(philo->data->start_time), philo->id);
 	}
 	return (NULL);
 }

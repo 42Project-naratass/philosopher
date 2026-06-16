@@ -7,18 +7,19 @@
 # include <stdbool.h>
 # include <errno.h>
 # include <sys/time.h>
+# include <string.h>
 # include "err.h"
 
 typedef struct	s_data
 {
-	size_t			philo_id;
-	size_t			nums_philo;
-	size_t			time_die;
-	size_t			time_eat;
-	size_t			time_sleep;
-	size_t			min_eat;
-	size_t			times_eat;
-	size_t			start_time;
+	pthread_t	*philos;
+	size_t		nums_philo;
+	size_t		time_die;
+	size_t		time_eat;
+	size_t		time_sleep;
+	size_t		min_eat;
+	size_t		times_eat;
+	size_t		start_time;
 }	t_data;
 
 typedef struct	s_philo
@@ -29,7 +30,7 @@ typedef struct	s_philo
 	t_data	*data;
 }	t_philo;
 
-void	philo_simulate(t_config *config);
+void	philo_simulate(t_data *data);
 void	*philo(void *arg);
 
 // utils

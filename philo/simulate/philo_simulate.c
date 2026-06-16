@@ -1,32 +1,33 @@
 #include "../philo.h"
 
-static void	*philo_config(t_config *config, size_t id)
+static void	*philo_config(t_data *share_data, size_t id)
 {
-	t_config	*thread_config;
+	t_philo	*philo;
 
-	thread_config = (t_config *) malloc(sizeof(t_config));
-	ft_memcpy(thread_config, config, sizeof(t_config));
-	thread_config->philo_id = id;
-	return (thread_config);
+	philo = (t_philo *) malloc(sizeof(t_philo));
+	if (!philo)
+		ft_exit(1);
+	memset(philo, 0, sizeof(t_philo));
+	philo->data = share_data;
+	philo->id = id;
+	return (philo);
 }
 
-void	philo_simulate(t_config *config)
+void	philo_simulate(t_data *data)
 {
-	pthread_t	philo_thread[config->nums_philo];
 	size_t		i;
 
 	i = 0;
-
-	config->start_time = get_time();
-	while (i < config->nums_philo)
+	data->start_time = get_time();
+	while (i < data->nums_philo)
 	{
-		pthread_create(&philo_thread[i], NULL, philo, philo_config(config, i + 1));
+		pthread_create(&data->philos[i], NULL, philo, philo_config(data, i + 1));
 		i++;
 	}
 	i = 0;
-	while (i < config->nums_philo)
+	while (i < data->nums_philo)
 	{
-		pthread_join(philo_thread[i], NULL);
+		pthread_join(data->philos[i], NULL);
 		i++;
 	}
 }

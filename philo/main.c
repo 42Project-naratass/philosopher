@@ -11,31 +11,32 @@ static int input_checker(char *argv[])
 		return (0);
 }
 
-static int	config_init(t_config *config, char *argv[], int argc)
+static int	data_init(t_data *data, char *argv[], int argc)
 {	
-	config->nums_philo = ft_atoi(argv[1]);
-	config->time_die = ft_atoi(argv[2]);
-	config->time_eat = ft_atoi(argv[3]);
-	config->time_sleep = ft_atoi(argv[4]);
+	data->nums_philo = ft_atoi(argv[1]);
+	data->time_die = ft_atoi(argv[2]);
+	data->time_eat = ft_atoi(argv[3]);
+	data->time_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 	{
 		if (!check_nums(argv[5]) && ft_atoi(argv[5]) < 1)
 			return (1);
-		config->min_eat = ft_atoi(argv[5]);
+		data->min_eat = ft_atoi(argv[5]);
 	}
+	data->philos = (pthread_t *) malloc(sizeof(pthread_t) * data->nums_philo);
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_config	config;
+	t_data	data;
 
     if (argc != 5 && argc != 6)
 		return (1);
 	if (input_checker(argv))
 		return (1);
-	if (config_init(&config, argv, argc))
+	if (data_init(&data, argv, argc))
 		return (1);
-	philo_simulate(&config);
+	philo_simulate(&data);
     return (0);
 }
