@@ -16,15 +16,13 @@ void	*philo(void *arg)
 	philo = arg;
 	time_since_last_eat = get_time();
 	while (true)
-	{	
+	{
 		if (elapsed_time(time_since_last_eat) >= philo->data->time_die)
 		{
 			printf("%zu philosophers%zu died\n", elapsed_time(philo->data->start_time), philo->id);
 			free(philo);
 			pthread_exit(NULL);
-			exit(0);
 		}
-		printf("%zu philosophers%zu thinking\n", elapsed_time(philo->data->start_time), philo->id);
 	}
 	return (NULL);
 }

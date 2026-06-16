@@ -13,7 +13,7 @@ static void	*philo_config(t_data *share_data, size_t id)
 	return (philo);
 }
 
-void	philo_simulate(t_data *data)
+int	philo_simulate(t_data *data)
 {
 	size_t		i;
 
@@ -30,4 +30,6 @@ void	philo_simulate(t_data *data)
 		pthread_join(data->philos[i], NULL);
 		i++;
 	}
+	free(data->philos);
+	return (0);
 }

@@ -30,7 +30,7 @@ typedef struct	s_philo
 	t_data	*data;
 }	t_philo;
 
-void	philo_simulate(t_data *data);
+int	philo_simulate(t_data *data);
 void	*philo(void *arg);
 
 // utils
