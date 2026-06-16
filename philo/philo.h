@@ -19,9 +19,15 @@ typedef struct	s_data
 	size_t			min_eat;
 	size_t			times_eat;
 	size_t			start_time;
-}				t_data;
+}	t_data;
 
-typedef struct	s_phio
+typedef struct	s_philo
+{
+	size_t	id;
+	bool	die;
+	bool	eating;
+	t_data	*data;
+}	t_philo;
 
 void	philo_simulate(t_config *config);
 void	*philo(void *arg);
