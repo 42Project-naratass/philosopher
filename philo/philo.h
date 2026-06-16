@@ -9,7 +9,7 @@
 # include <sys/time.h>
 # include "err.h"
 
-typedef struct	s_config
+typedef struct	s_data
 {
 	size_t			philo_id;
 	size_t			nums_philo;
@@ -19,7 +19,9 @@ typedef struct	s_config
 	size_t			min_eat;
 	size_t			times_eat;
 	size_t			start_time;
-}				t_config;
+}				t_data;
+
+typedef struct	s_phio
 
 void	philo_simulate(t_config *config);
 void	*philo(void *arg);
