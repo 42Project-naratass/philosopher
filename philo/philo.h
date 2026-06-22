@@ -21,6 +21,7 @@ typedef struct	s_data
 	size_t			times_eat;
 	size_t			start_time;
 	bool			dead;
+	pthread_mutex_t		*forks;
 	pthread_mutex_t	write;
 }	t_data;
 
@@ -28,6 +29,8 @@ typedef struct	s_philo
 {
 	size_t	id;
 	bool	eating;
+	pthread_mutex_t	*left_forks;
+	pthread_mutex_t	*right_forks;
 	t_data	*data;
 }	t_philo;
 

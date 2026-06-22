@@ -27,6 +27,9 @@ static int	data_init(t_data *data, char *argv[], int argc)
 	data->philos = (pthread_t *) malloc(sizeof(pthread_t) * data->nums_philo);
 	if (!data->philos)
 		return (1);
+	data->forks = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * data->nums_philo);
+	if (!data->forks)
+	    return (1);
 	return (0);
 }
 
