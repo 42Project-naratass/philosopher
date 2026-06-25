@@ -19,7 +19,10 @@ int	philo_simulate(t_data *data)
 
 	i = 0;
 	pthread_mutex_init(&data->write, NULL);
+  while (i < data->nums_philo)
+      pthread_mutex_init(&data->forks[i], NULL);
 	data->start_time = get_time();
+  i = 0;
 	while (i < data->nums_philo)
 	{
 		pthread_create(&data->philos[i], NULL, philo, philo_config(data, i + 1));
@@ -34,5 +37,7 @@ int	philo_simulate(t_data *data)
 		i++;
 	}
 	free(data->philos);
+  while (i < data->nums_philo)
+      pthread_mutex_destroy(&data->forks[i]);
 	return (0);
 }
