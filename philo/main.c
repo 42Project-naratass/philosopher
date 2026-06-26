@@ -13,6 +13,8 @@ static int input_checker(char *argv[])
 
 static int	data_init(t_data *data, char *argv[], int argc)
 {	
+	size_t	i;
+
 	data->nums_philo = ft_atoi(argv[1]);
 	data->time_die = ft_atoi(argv[2]);
 	data->time_eat = ft_atoi(argv[3]);
@@ -29,7 +31,10 @@ static int	data_init(t_data *data, char *argv[], int argc)
 		return (1);
 	data->forks = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * data->nums_philo);
 	if (!data->forks)
-	    return (1);
+	   return (1);
+	i = 0;
+	while (i < data->nums_philo)
+    pthread_mutex_init(&data->forks[i], NULL);
 	return (0);
 }
 
@@ -44,5 +49,5 @@ int	main(int argc, char *argv[])
 	if (data_init(&data, argv, argc))
 		return (1);
 	philo_simulate(&data);
-    return (0);
+  return (0);
 }

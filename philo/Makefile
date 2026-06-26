@@ -11,7 +11,8 @@ SRCS += utils/ft_strlen.c \
 		utils/check_nums.c \
 		utils/ft_exit.c \
 		utils/ft_memcpy.c \
-		utils/get_time.c
+		utils/get_time.c \
+		utils/ft_free.c
 
 SRCS += err_handle/thread_err.c \
 
