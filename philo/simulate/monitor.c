@@ -1,14 +1,12 @@
 #include "../philo.h"
 #include <stddef.h>
+#include <stdio.h>
 
 void  monitor(t_data *data)
 {
     size_t i;
 
-    printf("Monitor is working..\n");
-    if (data->dead == true)
-        printf("Is dead\n");
-    while (1)
+    while (!data->dead)
     {
         i = 0;
         while (i < data->nums_philo)
