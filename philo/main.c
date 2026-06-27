@@ -11,43 +11,19 @@ static int input_checker(char *argv[])
 		return (0);
 }
 
-static int	data_init(t_data *data, char *argv[], int argc)
-{	
-	size_t	i;
-
-	data->nums_philo = ft_atoi(argv[1]);
-	data->time_die = ft_atoi(argv[2]);
-	data->time_eat = ft_atoi(argv[3]);
-	data->time_sleep = ft_atoi(argv[4]);
-	if (argc == 6)
-	{
-		if (!check_nums(argv[5]) && ft_atoi(argv[5]) < 1)
-			return (1);
-		data->min_eat = ft_atoi(argv[5]);
-	}
-	data->dead = false;
-	data->philos = (pthread_t *) malloc(sizeof(pthread_t) * data->nums_philo);
-	if (!data->philos)
-		return (1);
-	data->forks = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * data->nums_philo);
-	if (!data->forks)
-	   return (1);
-	i = 0;
-	while (i < data->nums_philo)
-    pthread_mutex_init(&data->forks[i], NULL);
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
     if (argc != 5 && argc != 6)
-		return (1);
+		ft_exit(1);
 	if (input_checker(argv))
-		return (1);
+		ft_exit(1);
 	if (data_init(&data, argv, argc))
-		return (1);
+	{
+		printf("Bug here\n");
+		ft_exit(1);
+	}
 	philo_simulate(&data);
   return (0);
 }

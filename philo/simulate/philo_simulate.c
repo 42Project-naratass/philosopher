@@ -1,39 +1,30 @@
 #include "../philo.h"
 
-static void	*philo_config(t_data *share_data, size_t id)
+static void philo_init(t_data *data, t_philo *philo, size_t id)
 {
-	t_philo	*philo;
-
-	philo = (t_philo *) malloc(sizeof(t_philo));
-	if (!philo)
-		ft_exit(1);
-	memset(philo, 0, sizeof(t_philo));
-	philo->data = share_data;
-	philo->id = id;
-	return (philo);
+    if (!philo)
+        ft_exit(1);
+    memset(philo, 0, sizeof(t_philo));
+    philo->data = data;
+    philo->id = id;
 }
 
 int	philo_simulate(t_data *data)
 {
-	size_t		i;
+    size_t		i;
 
-	i = 0;
-  
-	data->start_time = get_time();
-  i = 0;
-	while (i < data->nums_philo)
-	{
-		pthread_create(&data->philos[i], NULL, philo, philo_config(data, i + 1));
-		i++;
-	}
-	i = 0;
-	while (!data->dead)
-		continue ;
-	while (i < data->nums_philo)
-	{
-		pthread_join(data->philos[i], NULL);
-		i++;
-	}
-	ft_free(data);
-	return (0);
+    data->start_time = get_time();
+    i = 0;
+    while (i < data->nums_philo)
+    {
+        philo_init(data, &data->philos[i], i + 1);
+        pthread_create(&data->tid[i], NULL, philo, &data->philos[i]);
+        i++;
+    }
+    monitor(data);
+    i = 0;
+    while(i < data->nums_philo)
+        pthread_join(data->tid[i], NULL);
+    clear_data(data);
+    return (0);
 }

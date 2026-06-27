@@ -1,5 +1,6 @@
 #ifndef PHILO_H
 # define PHILO_H
+#include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
@@ -10,9 +11,22 @@
 # include <string.h>
 # include "err.h"
 
+struct s_data;
+
+typedef struct	s_philo
+{
+    struct s_data	  *data;
+    size_t          id;
+    bool	          eating;
+    size_t					last_eat;
+    pthread_mutex_t	*left_forks;
+    pthread_mutex_t	*right_forks;
+}	t_philo;
+
 typedef struct	s_data
 {
-    pthread_t         *philos;
+    t_philo           *philos;
+    pthread_t					*tid;
     size_t			      nums_philo;
     size_t			      time_die;
     size_t			      time_eat;
@@ -22,20 +36,15 @@ typedef struct	s_data
     size_t			      start_time;
     bool			        dead;
     pthread_mutex_t		*forks;
-    pthread_mutex_t	  write;
+    pthread_mutex_t   print;
 }	t_data;
 
-typedef struct	s_philo
-{
-    size_t          id;
-    bool	          eating;
-    pthread_mutex_t	*left_forks;
-    pthread_mutex_t	*right_forks;
-    t_data	        *data;
-}	t_philo;
-
+// simulate
 int	    philo_simulate(t_data *data);
 void	  *philo(void *arg);
+void    monitor(t_data *data);
+
+int     data_init(t_data *data, char *argv[], int argc);
 
 // utils
 size_t	ft_strlen(char *s);
@@ -49,5 +58,8 @@ bool	  is_space(char c);
 void	  ft_exit(int error_code);
 void	  *ft_memcpy(void *dst, const void *src, size_t n);
 size_t	get_time(void);
+void		ft_free(t_data *data);
+void    clear_data(t_data *data);
+size_t  elapsed_time(size_t t0);
 
 #endif

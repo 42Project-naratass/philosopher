@@ -2,10 +2,10 @@
 
 void	ft_free(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	free(data->philos);
-  while (i < data->nums_philo)
-    pthread_mutex_destroy(&data->forks[i]);
+    if (data->tid)
+        free(data->tid);
+    if (data->philos)
+        free(data->philos);
+    if (data->forks)
+        free(data->forks);
 }
