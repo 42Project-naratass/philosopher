@@ -3,6 +3,7 @@ DEBUG := philo_debug
 
 SRCS := main.c \
 				data_init.c
+
 SRCS += utils/ft_strlen.c \
 				utils/putstr_fd.c \
 				utils/ft_atof.c \
@@ -21,12 +22,13 @@ SRCS += utils/ft_strlen.c \
 SRCS += err_handle/thread_err.c \
 
 SRCS += simulate/philo_simulate.c \
-				simulate/philo.c
+				simulate/philo.c \
+				simulate/monitor.c \
 
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS := -Wall -Werror -Wextra
-DFLAGS := -g3
+DFLAGS := -g3 -fsanitize=address,undefined
 
 INCLUDE = -I.
 

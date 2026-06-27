@@ -13,8 +13,8 @@ int	philo_simulate(t_data *data)
 {
     size_t		i;
 
-    data->start_time = get_time();
     i = 0;
+    data->start_time = get_time();
     while (i < data->nums_philo)
     {
         philo_init(data, &data->philos[i], i + 1);
@@ -24,7 +24,10 @@ int	philo_simulate(t_data *data)
     monitor(data);
     i = 0;
     while(i < data->nums_philo)
-        pthread_join(data->tid[i], NULL);
+    {
+        pthread_join(data->tid[i++], NULL);
+        ++i;
+    }
     clear_data(data);
     return (0);
 }
