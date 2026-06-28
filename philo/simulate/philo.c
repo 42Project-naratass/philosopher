@@ -21,9 +21,9 @@ void	*philo(void *arg)
     while (!philo->data->dead)
     {
         printf("%zu philospher%zu is thinking\n", elapsed_time(philo->data->start_time), philo->id);
-	eating(philo);
-        printf("%zu philospher%zu is sleeping\n", elapsed_time(philo->data->start_time), philo->id);
+        eating(philo);
 	philo->last_eat = get_time();
+        printf("%zu philospher%zu is sleeping\n", elapsed_time(philo->data->start_time), philo->id);
 	usleep(philo->data->time_sleep);
 
     }
