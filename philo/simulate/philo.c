@@ -9,8 +9,8 @@ static void	eating(t_philo *philo)
     printf("%zu philospher%zu is eating\n", elapsed_time(philo->data->start_time), philo->id);
     usleep(philo->data->time_eat);
     philo->eating = false;
-    pthread_mutex_unlock(philo->right_fork);
     pthread_mutex_unlock(philo->left_fork);
+    pthread_mutex_unlock(philo->right_fork);
 }
 
 void	*philo(void *arg)
