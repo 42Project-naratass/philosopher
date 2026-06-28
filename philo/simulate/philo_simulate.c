@@ -8,6 +8,7 @@ static void philo_init(t_data *data, t_philo *philo, size_t id)
     philo->data = data;
     philo->id = id;
     philo->last_eat = get_time();
+    philo->left_fork = philo->data->forks[]
 }
 
 int	philo_simulate(t_data *data)
