@@ -4,10 +4,11 @@
 static void	eating(t_philo *philo)
 {
     pthread_mutex_lock(philo->left_fork);
+    printf("philos%zu get left fork\n", philo->id);
     pthread_mutex_lock(philo->right_fork);
     philo->eating = true;
     printf("%zu philospher%zu is eating\n", elapsed_time(philo->data->start_time), philo->id);
-    usleep(philo->data->time_eat);
+    usleep(philo->data->time_eat * 1000);
     philo->eating = false;
     pthread_mutex_unlock(philo->left_fork);
     pthread_mutex_unlock(philo->right_fork);
@@ -22,10 +23,10 @@ void	*philo(void *arg)
     {
         printf("%zu philospher%zu is thinking\n", elapsed_time(philo->data->start_time), philo->id);
         eating(philo);
-	philo->last_eat = get_time();
+        philo->last_eat = get_time();
         printf("%zu philospher%zu is sleeping\n", elapsed_time(philo->data->start_time), philo->id);
-	usleep(philo->data->time_sleep);
-
+        usleep(philo->data->time_sleep * 1000);
     }
+    printf("Philosopher%zu I'm dead\n", philo->id);
     pthread_exit(0);
 }

@@ -1,15 +1,18 @@
 #include "../philo.h"
 
-static void philo_init(t_data *data, t_philo *philo, size_t id)
+static int  philo_init(t_data *data, t_philo *philo, size_t id)
 {
     if (!philo)
         ft_exit(1);
     memset(philo, 0, sizeof(t_philo));
     philo->data = data;
     philo->id = id;
-    philo->last_eat = get_time();
     philo->left_fork = &philo->data->forks[(id - 2) % philo->id];
     philo->right_fork = &philo->data->forks[(id + 1) % philo->id];
+    if (!philo->left_fork || !philo->right_fork)
+        return (0);
+    philo->last_eat = get_time();
+    return (1);
 }
 
 int	philo_simulate(t_data *data)
@@ -20,7 +23,8 @@ int	philo_simulate(t_data *data)
     data->start_time = get_time();
     while (i < data->nums_philo)
     {
-        philo_init(data, &data->philos[i], i + 1);
+        if (!philo_init(data, &data->philos[i], i + 1))
+            return (1);
         pthread_create(&data->tid[i], NULL, philo, &data->philos[i]);
         i++;
     }
