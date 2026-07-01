@@ -25,16 +25,12 @@ int	philo_simulate(t_data *data)
     {
         if (!philo_init(data, &data->philos[i], i + 1))
             return (1);
-        pthread_create(&data->tid[i], NULL, philo, &data->philos[i]);
+        if (pthread_create(&data->tid[i], NULL, philo, &data->philos[i]) != 0)
+            return (1);
+        pthread_detach(data->tid[i]);
         i++;
     }
     monitor(data);
-    i = 0;
-    while(i < data->nums_philo)
-    {
-        pthread_join(data->tid[i], NULL);
-        ++i;
-    }
     clear_data(data);
     return (0);
 }
