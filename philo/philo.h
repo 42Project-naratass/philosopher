@@ -11,6 +11,11 @@
 # include <string.h>
 # include "err.h"
 
+# define EATING "is eating"
+# define SLEEPING "is sleeping"
+# define THINKING "is thinking"
+# define DIED "died"
+
 struct s_data;
 
 typedef struct	s_philo
@@ -43,6 +48,7 @@ typedef struct	s_data
 int	    philo_simulate(t_data *data);
 void	  *philo(void *arg);
 void    monitor(t_data *data);
+void    log_display(size_t timestamp, size_t id, char *status);
 
 int     data_init(t_data *data, char *argv[], int argc);
 
@@ -61,5 +67,6 @@ size_t	get_time(void);
 void		ft_free(t_data *data);
 void    clear_data(t_data *data);
 size_t  elapsed_time(size_t t0);
+int     ft_usleep(useconds_t time);
 
 #endif

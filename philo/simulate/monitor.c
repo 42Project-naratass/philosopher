@@ -4,7 +4,8 @@
 
 void  monitor(t_data *data)
 {
-    size_t i;
+    size_t  i;
+    size_t  timestamp;
 
     while (!data->dead)
     {
@@ -14,7 +15,10 @@ void  monitor(t_data *data)
             if (!data->philos[i].eating && elapsed_time(data->philos[i].last_eat) >= data->time_die)
             {
                 data->dead = true;
-                printf("%zu philospher%zu died\n", elapsed_time(data->start_time), data->philos[i].id);
+                timestamp = elapsed_time(data->start_time);
+                pthread_mutex_lock(&data->print);
+                log_display(timestamp, data->philos[i].id, DIED);
+                pthread_mutex_unlock(&data->print);
                 return ;
             }
             i++;
