@@ -30,7 +30,7 @@ void	*philo(void *arg)
     size_t  timestamp;
 
     philo = arg;
-    while (!philo->data->dead)
+    while (1)
     {
         timestamp = elapsed_time(philo->data->start_time);
         pthread_mutex_lock(&philo->data->print);
