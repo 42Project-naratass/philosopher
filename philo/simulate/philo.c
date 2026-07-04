@@ -7,14 +7,18 @@ static void	eating(t_philo *philo)
 
     pthread_mutex_lock(philo->left_fork);
     pthread_mutex_lock(philo->right_fork);
+	pthread_mutex_lock(philo->lock);
     philo->eating = true;
+	pthread_mutex_unlock(philo->lock);
     timestamp = elapsed_time(philo->data->start_time);
     pthread_mutex_lock(&philo->data->print);
     log_display(timestamp, philo->id, EATING);
     pthread_mutex_unlock(&philo->data->print);
     usleep(philo->data->time_eat * 1000);
+	pthread_mutex_lock(philo->lock);
     philo->eating = false;
     philo->last_eat = get_time();
+	pthread_mutex_unlock(philo->lock);
     pthread_mutex_unlock(philo->left_fork);
     pthread_mutex_unlock(philo->right_fork);
     timestamp = elapsed_time(philo->data->start_time);

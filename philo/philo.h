@@ -26,6 +26,7 @@ typedef struct	s_philo
     size_t					last_eat;
     pthread_mutex_t	*left_fork;
     pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*lock;
 }	t_philo;
 
 typedef struct	s_data
@@ -42,6 +43,7 @@ typedef struct	s_data
     bool			        dead;
     pthread_mutex_t		*forks;
     pthread_mutex_t   print;
+	pthread_mutex_t	lock;
 }	t_data;
 
 // simulate

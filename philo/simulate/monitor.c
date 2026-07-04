@@ -7,11 +7,12 @@ void  monitor(t_data *data)
     size_t  i;
     size_t  timestamp;
 
-    while (!data->dead)
+    while (1)
     {
         i = 0;
         while (i < data->nums_philo)
         {
+			pthread_mutex_lock(&data->lock);
             if (!data->philos[i].eating && elapsed_time(data->philos[i].last_eat) >= data->time_die)
             {
                 data->dead = true;
@@ -21,6 +22,7 @@ void  monitor(t_data *data)
                 pthread_mutex_unlock(&data->print);
                 return ;
             }
+			pthread_mutex_unlock(&data->lock);
             i++;
         }
     }

@@ -12,5 +12,6 @@ void  clear_data(t_data *data)
         i++;
     }
     pthread_mutex_destroy(&data->print);
+	pthread_mutex_destroy(&data->lock);
     ft_free(data);
 }
