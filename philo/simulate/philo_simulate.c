@@ -7,10 +7,12 @@ static int  philo_init(t_data *data, t_philo *philo, size_t id)
     memset(philo, 0, sizeof(t_philo));
     philo->data = data;
     philo->id = id;
-    philo->left_fork = &philo->data->forks[(id - 2) % philo->id];
-    philo->right_fork = &philo->data->forks[(id + 1) % philo->id];
+    philo->left_fork = &philo->data->forks[id - 1];
+    philo->right_fork = &philo->data->forks[id % philo->data->nums_philo];
     if (!philo->left_fork || !philo->right_fork)
-        return (0);
+		return (0);
+	printf("philo%zu left fork: %zu\n", id, id - 1);
+	printf("philo%zu right fork: %zu\n", id, id % philo->data->nums_philo);
     philo->last_eat = get_time();
     return (1);
 }

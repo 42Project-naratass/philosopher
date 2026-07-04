@@ -30,7 +30,7 @@ SRCS += simulate/philo_simulate.c \
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS := -Wall -Werror -Wextra
-DFLAGS := -g3 -fsanitize=address,undefined
+DFLAGS := -g3 -pthread 
 
 INCLUDE = -I.
 
