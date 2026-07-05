@@ -11,22 +11,16 @@
 # include <string.h>
 # include "err.h"
 
-# define EATING "is eating"
-# define SLEEPING "is sleeping"
-# define THINKING "is thinking"
-# define DIED "died"
-
 struct s_data;
 
 typedef struct	s_philo
 {
-    struct s_data	  *data;
+    struct s_data	*data;
     size_t          id;
-    bool	          eating;
-    size_t					last_eat;
+    bool			eating;
+    size_t			last_eat;
     pthread_mutex_t	*left_fork;
     pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*lock;
 }	t_philo;
 
 typedef struct	s_data
@@ -47,11 +41,21 @@ typedef struct	s_data
 	pthread_mutex_t	stop_lock;
 }	t_data;
 
+typedef enum	e_status
+{
+	DIED,
+	EATING,
+	SLEEPING,
+	THINKING,
+	GET_LEFT_FORK,
+	GET_RIGHT_FORK,
+}	t_status;
+
 // simulate
 int	    philo_simulate(t_data *data);
 void	*philo(void *arg);
 void    monitor(t_data *data);
-void    log_display(size_t timestamp, size_t id, char *status);
+void	print_status(t_philo *philo, t_status mode, size_t timestamp);
 int     data_init(t_data *data, char *argv[], int argc);
 
 // utils
@@ -69,7 +73,7 @@ size_t	get_time(void);
 void	ft_free(t_data *data);
 void    clear_data(t_data *data);
 size_t  elapsed_time(size_t t0);
-int     ft_usleep(useconds_t time);
+void	philo_usleep(t_data *data, size_t time);
 bool	simulate_stop(t_data *data);
 
 #endif

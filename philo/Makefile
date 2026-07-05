@@ -18,7 +18,7 @@ SRCS += utils/ft_strlen.c \
 				utils/ft_free.c \
 				utils/clear_data.c \
 				utils/elapsed_time.c \
-				utils/ft_usleep.c \
+				utils/philo_usleep.c \
 				utils/simulate_stop.c \
 
 SRCS += err_handle/thread_err.c \
@@ -26,7 +26,7 @@ SRCS += err_handle/thread_err.c \
 SRCS += simulate/philo_simulate.c \
 				simulate/philo.c \
 				simulate/monitor.c \
-				simulate/log_display.c \
+				simulate/print_status.c \
 
 OBJS := $(SRCS:.c=.o)
 

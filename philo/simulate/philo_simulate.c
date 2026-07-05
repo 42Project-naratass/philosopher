@@ -12,7 +12,6 @@ static int  philo_init(t_data *data, t_philo *philo, size_t id)
     if (!philo->left_fork || !philo->right_fork)
 		return (0);
     philo->last_eat = get_time();
-	philo->lock = &data->lock;
     return (1);
 }
 
