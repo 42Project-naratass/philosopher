@@ -31,44 +31,45 @@ typedef struct	s_philo
 
 typedef struct	s_data
 {
-    t_philo           *philos;
-    pthread_t					*tid;
-    size_t			      nums_philo;
-    size_t			      time_die;
-    size_t			      time_eat;
-    size_t			      time_sleep;
-    size_t			      min_eat;
-    size_t			      times_eat;
-    size_t			      start_time;
-    bool			        dead;
-    pthread_mutex_t		*forks;
-    pthread_mutex_t   print;
+    t_philo			*philos;
+    pthread_t		*tid;
+    size_t			nums_philo;
+    size_t			time_die;
+    size_t			time_eat;
+    size_t			time_sleep;
+    size_t			min_eat;
+    size_t			times_eat;
+    size_t			start_time;
+    bool			dead;
+    pthread_mutex_t	*forks;
+    pthread_mutex_t print;
 	pthread_mutex_t	lock;
+	pthread_mutex_t	stop_lock;
 }	t_data;
 
 // simulate
 int	    philo_simulate(t_data *data);
-void	  *philo(void *arg);
+void	*philo(void *arg);
 void    monitor(t_data *data);
 void    log_display(size_t timestamp, size_t id, char *status);
-
 int     data_init(t_data *data, char *argv[], int argc);
 
 // utils
 size_t	ft_strlen(char *s);
-void	  putstr_fd(char *str, int fd);
+void	putstr_fd(char *str, int fd);
 double	ft_atof(char *nbtr);
 double	ft_strtod(char *str, char **endptr);
-int		  ft_atoi(char *nptr);
-bool	  check_nums(char *str);
+int		ft_atoi(char *nptr);
+bool	check_nums(char *str);
 int	  	is_digit(int c);
-bool	  is_space(char c);
-void	  ft_exit(int error_code);
-void	  *ft_memcpy(void *dst, const void *src, size_t n);
+bool	is_space(char c);
+void	ft_exit(int error_code);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 size_t	get_time(void);
-void		ft_free(t_data *data);
+void	ft_free(t_data *data);
 void    clear_data(t_data *data);
 size_t  elapsed_time(size_t t0);
 int     ft_usleep(useconds_t time);
+bool	simulate_stop(t_data *data);
 
 #endif

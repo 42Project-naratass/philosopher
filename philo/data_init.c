@@ -26,6 +26,7 @@ static int mutex(t_data *data)
     }
     pthread_mutex_init(&data->print, NULL);
 	pthread_mutex_init(&data->lock, NULL);
+	pthread_mutex_init(&data->stop_lock, NULL);
     return (1);
 }
 

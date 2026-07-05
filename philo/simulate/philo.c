@@ -6,7 +6,9 @@ static void	eating(t_philo *philo)
     size_t  timestamp;
 
     pthread_mutex_lock(philo->left_fork);
+	printf("philo%zu take left fork\n", philo->id);
     pthread_mutex_lock(philo->right_fork);
+	printf("philo%zu take right fork\n", philo->id);
 	pthread_mutex_lock(philo->lock);
     philo->eating = true;
 	pthread_mutex_unlock(philo->lock);
@@ -19,8 +21,8 @@ static void	eating(t_philo *philo)
     philo->eating = false;
     philo->last_eat = get_time();
 	pthread_mutex_unlock(philo->lock);
-    pthread_mutex_unlock(philo->left_fork);
     pthread_mutex_unlock(philo->right_fork);
+    pthread_mutex_unlock(philo->left_fork);
     timestamp = elapsed_time(philo->data->start_time);
     pthread_mutex_lock(&philo->data->print);
     log_display(timestamp, philo->id, SLEEPING);
@@ -34,7 +36,7 @@ void	*philo(void *arg)
     size_t  timestamp;
 
     philo = arg;
-    while (1)
+    while (simulate_stop(philo->data) == false)
     {
         timestamp = elapsed_time(philo->data->start_time);
         pthread_mutex_lock(&philo->data->print);

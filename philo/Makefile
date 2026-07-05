@@ -18,7 +18,8 @@ SRCS += utils/ft_strlen.c \
 				utils/ft_free.c \
 				utils/clear_data.c \
 				utils/elapsed_time.c \
-				utils/ft_usleep.c
+				utils/ft_usleep.c \
+				utils/simulate_stop.c \
 
 SRCS += err_handle/thread_err.c \
 
