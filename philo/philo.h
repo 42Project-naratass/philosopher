@@ -19,6 +19,7 @@ typedef struct	s_philo
     size_t          id;
     bool			eating;
     size_t			last_eat;
+	size_t			meals_eat;
     pthread_mutex_t	*left_fork;
     pthread_mutex_t	*right_fork;
 }	t_philo;

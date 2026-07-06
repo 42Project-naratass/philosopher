@@ -10,6 +10,8 @@ static void	eating(t_philo *philo)
 	pthread_mutex_lock(&philo->data->lock);
 	philo->eating = true;
 	philo->last_eat = get_time();
+	if (philo->data->min_eat > 0)
+		philo->meals_eat++;
 	pthread_mutex_unlock(&philo->data->lock);
 	print_status(philo, EATING, elapsed_time(philo->data->start_time));
 	usleep(philo->data->time_sleep * 1000);
