@@ -11,4 +11,12 @@
 # define C "\033[1;36m"  // Cyan
 # define W "\033[1;37m"  // White
 
+# define MALLOC_FAIL "Error: Memory allocation failed.\n" 
+# define THREAD_CREATE_FAIL "Error: Thread creation failed.\n"
+# define TIME_FAIL "Error: Get time failed.\n"
+# define LOCK_FAIL "Error: Mutex lock failed.\n"  
+# define UNLOCK_FAIL "Error: Mutex unlock failed.\n"
+# define MUTEX_INIT_FAIL "Error: Mutex failed to inti.\n"
+# define 
+
 #endif

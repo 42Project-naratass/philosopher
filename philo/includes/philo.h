@@ -9,8 +9,7 @@
 # include <errno.h>
 # include <sys/time.h>
 # include <string.h>
-# include "err.h"
-# include "message.h"
+# include "../includes/message.h"
 
 struct s_data;
 
@@ -53,6 +52,17 @@ typedef enum	e_status
 	GET_RIGHT_FORK,
 }	t_status;
 
+typedef enum e_mode
+{
+	CREATE_THREAD,
+	JOIN_THREAD,
+	INIT_MUTEX,
+	DESTROY_MUTEX,
+	LOCK_MUTEX,
+	UNLOCK_MUTEX,
+
+}	t_mode;
+
 // simulate
 int	    philo_simulate(t_data *data);
 void    monitor(t_data *data);
@@ -81,7 +91,6 @@ void	ft_putstr_fd(char *str, int fd);
 int		ft_atoi(char *nptr);
 int	  	is_digit(int c);
 bool	is_space(char c);
-void	ft_exit(int error_code);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_free(t_data *data);
 void    clear_data(t_data *data);

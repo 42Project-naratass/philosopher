@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
     t_data	data;
 
     if (argc != 5 && argc != 6)
-        ft_exit(1);
+        
     if (input_checker(argv))
         ft_exit(1);
     if (data_init(&data, argv, argc))
