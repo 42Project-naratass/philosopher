@@ -4,6 +4,14 @@ DEBUG := philo_debug
 SRCS := main.c \
 		data_init.c
 
+SRCS := action/philo_usleep.c \
+		action/simulate_stop.c \
+		action/one_philo.c \
+		action/two_philos.c \
+
+SRCS := time/elapsed_time.c \
+		time/get_time.c \
+
 SRCS += utils/ft_strlen.c \
 		utils/ft_atoi.c \
 		utils/is_digit.c \
@@ -14,18 +22,13 @@ SRCS += utils/ft_strlen.c \
 		utils/get_time.c \
 		utils/ft_free.c \
 		utils/clear_data.c \
-		utils/elapsed_time.c \
 		utils/philo_usleep.c \
-		utils/simulate_stop.c \
+		utils/print_status.c \
 
 SRCS += err_handle/thread_err.c \
 
-SRCS += simulate/philo_simulate.c \
-		simulate/one_philo.c \
-		simulate/two_philos.c \
-		simulate/three_philos.c \
-		simulate/monitor.c \
-		simulate/print_status.c \
+SRCS += simulate/monitor.c \
+		simulate/philo_simulate.c \
 
 OBJS := $(SRCS:.c=.o)
 
