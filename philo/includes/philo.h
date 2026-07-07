@@ -10,6 +10,7 @@
 # include <sys/time.h>
 # include <string.h>
 # include "err.h"
+# include "message.h"
 
 struct s_data;
 

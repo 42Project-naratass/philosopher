@@ -7,9 +7,9 @@ static void	print_log(size_t timestamp, size_t id, char *status)
 
 void  print_status(t_philo *philo, t_status mode, size_t timestamp)
 {
-	if (mode == DIED)
-		print_log(timestamp, philo->id, "died");
 	pthread_mutex_lock(&philo->data->print);
+	if (mode == DIED)
+		print_log(timestamp, philo->id, R "died" RST);
 	if (simulate_stop(philo->data) == true)
 	{
 		pthread_mutex_unlock(&philo->data->print);

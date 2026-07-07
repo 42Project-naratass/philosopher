@@ -35,7 +35,7 @@ OBJS := $(SRCS:.c=.o)
 CFLAGS := -Wall -Werror -Wextra
 DFLAGS := -g3 -pthread 
 
-INCLUDE = -I.
+INCLUDE = -I /includes
 
 %.o: %.c
 	cc -c $(CFLAGS) $< -o $@
