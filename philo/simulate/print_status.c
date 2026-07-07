@@ -2,7 +2,7 @@
 
 static void	print_log(size_t timestamp, size_t id, char *status)
 {
-	printf("%zu philosopher %zu %s\n", timestamp, id, status);
+	printf("%zu %zu %s\n", timestamp, id, status);
 }
 
 void  print_status(t_philo *philo, t_status mode, size_t timestamp)
@@ -22,8 +22,8 @@ void  print_status(t_philo *philo, t_status mode, size_t timestamp)
 	else if (mode == THINKING)
 		print_log(timestamp, philo->id, "is thinking");
 	else if (mode == GET_LEFT_FORK)
-		print_log(timestamp, philo->id, "get taken a fork");
+		print_log(timestamp, philo->id, "has taken a fork");
 	else if (mode == GET_RIGHT_FORK)
-		print_log(timestamp, philo->id, "get taken a fork");
+		print_log(timestamp, philo->id, "has taken a fork");
 	pthread_mutex_unlock(&philo->data->print);
 }

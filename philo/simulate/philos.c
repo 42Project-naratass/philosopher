@@ -30,10 +30,10 @@ void	*philos(void *arg)
     philo = arg;
     while (simulate_stop(philo->data) == false)
     {
-		print_status(philo, THINKING, elapsed_time(philo->data->start_time));
         eating(philo);
 		print_status(philo, SLEEPING, elapsed_time(philo->data->start_time));
 		usleep(philo->data->time_sleep * 1000);
+		print_status(philo, THINKING, elapsed_time(philo->data->start_time));
 		//philo_usleep(philo->data, philo->data->time_sleep);
     }
     pthread_exit(0);
