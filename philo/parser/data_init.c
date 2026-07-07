@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../includes/philo.h"
 #include <stddef.h>
 
 static int allocate(t_data *data)

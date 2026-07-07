@@ -5,10 +5,7 @@ SRCS := main.c \
 		data_init.c
 
 SRCS += utils/ft_strlen.c \
-		utils/putstr_fd.c \
-		utils/ft_atof.c \
 		utils/ft_atoi.c \
-		utils/ft_strtod.c \
 		utils/is_digit.c \
 		utils/is_space.c \
 		utils/check_nums.c \
@@ -25,7 +22,8 @@ SRCS += err_handle/thread_err.c \
 
 SRCS += simulate/philo_simulate.c \
 		simulate/one_philo.c \
-		simulate/philos.c \
+		simulate/two_philos.c \
+		simulate/three_philos.c \
 		simulate/monitor.c \
 		simulate/print_status.c \
 

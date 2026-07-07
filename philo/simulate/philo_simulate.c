@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 static int  philo_init(t_data *data, t_philo *philo, size_t id)
 {

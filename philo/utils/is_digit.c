@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	is_digit(int c)
 {

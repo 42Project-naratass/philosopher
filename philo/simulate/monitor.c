@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 #include <stddef.h>
 #include <stdio.h>
 

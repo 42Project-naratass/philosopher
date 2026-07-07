@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "includes/philo.h"
 
 static int input_checker(char *argv[])
 {

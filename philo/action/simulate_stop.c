@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 bool	simulate_stop(t_data *data)
 {

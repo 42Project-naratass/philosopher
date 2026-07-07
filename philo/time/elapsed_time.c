@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 size_t	elapsed_time(size_t t0)
 {

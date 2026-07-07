@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 #include <stddef.h>
 
 void  clear_data(t_data *data)

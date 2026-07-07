@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 static void	print_log(size_t timestamp, size_t id, char *status)
 {
