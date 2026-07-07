@@ -55,28 +55,36 @@ typedef enum	e_status
 
 // simulate
 int	    philo_simulate(t_data *data);
-void	*one_philo(void *arg);
-void	*philos(void *arg);
 void    monitor(t_data *data);
-void	print_status(t_philo *philo, t_status mode, size_t timestamp);
+
+// parser
 int     data_init(t_data *data, char *argv[], int argc);
+bool	check_nums(char *str);
+
+// action
+bool	simulate_stop(t_data *data);
+void	*one_philo(void *arg);
+void	*two_philo(void *arg);
+void	*three_philo(void *arg);
+
+// message
+void	print_status(t_philo *philo, t_status mode, size_t timestamp);
+void	error_exit(int exit_code, char *msg, int fd, t_data *data);
+
+// time
+size_t  elapsed_time(size_t t0);
+size_t	get_time(void);
 
 // utils
 size_t	ft_strlen(char *s);
-void	putstr_fd(char *str, int fd);
-double	ft_atof(char *nbtr);
-double	ft_strtod(char *str, char **endptr);
+void	ft_putstr_fd(char *str, int fd);
 int		ft_atoi(char *nptr);
-bool	check_nums(char *str);
 int	  	is_digit(int c);
 bool	is_space(char c);
 void	ft_exit(int error_code);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
-size_t	get_time(void);
 void	ft_free(t_data *data);
 void    clear_data(t_data *data);
-size_t  elapsed_time(size_t t0);
 void	philo_usleep(t_data *data, size_t time);
-bool	simulate_stop(t_data *data);
 
 #endif

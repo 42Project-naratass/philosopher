@@ -8,6 +8,7 @@ SRCS := action/philo_usleep.c \
 		action/simulate_stop.c \
 		action/one_philo.c \
 		action/two_philos.c \
+		action/three_philos.c \
 
 SRCS := parser/data_init.c \
 		parser/check_nums.c \
@@ -15,22 +16,24 @@ SRCS := parser/data_init.c \
 SRCS := time/elapsed_time.c \
 		time/get_time.c \
 
+SRCS :=	message/print_status.c \
+		message/error_exit.c \
+
 SRCS += utils/ft_strlen.c \
 		utils/ft_putstr_fd.c \
 		utils/ft_atoi.c \
 		utils/is_digit.c \
 		utils/is_space.c \
-		utils/ft_exit.c \
 		utils/ft_memcpy.c \
 		utils/ft_free.c \
 		utils/clear_data.c \
 		utils/philo_usleep.c \
-		utils/print_status.c \
-
-SRCS += err_handle/error_exit.c \
 
 SRCS += simulate/monitor.c \
 		simulate/philo_simulate.c \
+
+SRCS += clean_up/ft_free.c \
+		clean_up/clear_data.c \
 
 OBJS := $(SRCS:.c=.o)
 
