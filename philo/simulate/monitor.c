@@ -34,7 +34,6 @@ void  monitor(t_data *data)
 			{
 				data->dead = true;
 				pthread_mutex_unlock(&data->lock);
-				printf("All full\n");
 				return ;
 			}
 			pthread_mutex_unlock(&data->lock);

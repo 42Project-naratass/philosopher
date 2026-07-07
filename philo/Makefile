@@ -2,31 +2,32 @@ NAME := philo
 DEBUG := philo_debug
 
 SRCS := main.c \
-				data_init.c
+		data_init.c
 
 SRCS += utils/ft_strlen.c \
-				utils/putstr_fd.c \
-				utils/ft_atof.c \
-				utils/ft_atoi.c \
-				utils/ft_strtod.c \
-				utils/is_digit.c \
-				utils/is_space.c \
-				utils/check_nums.c \
-				utils/ft_exit.c \
-				utils/ft_memcpy.c \
-				utils/get_time.c \
-				utils/ft_free.c \
-				utils/clear_data.c \
-				utils/elapsed_time.c \
-				utils/philo_usleep.c \
-				utils/simulate_stop.c \
+		utils/putstr_fd.c \
+		utils/ft_atof.c \
+		utils/ft_atoi.c \
+		utils/ft_strtod.c \
+		utils/is_digit.c \
+		utils/is_space.c \
+		utils/check_nums.c \
+		utils/ft_exit.c \
+		utils/ft_memcpy.c \
+		utils/get_time.c \
+		utils/ft_free.c \
+		utils/clear_data.c \
+		utils/elapsed_time.c \
+		utils/philo_usleep.c \
+		utils/simulate_stop.c \
 
 SRCS += err_handle/thread_err.c \
 
 SRCS += simulate/philo_simulate.c \
-				simulate/philo.c \
-				simulate/monitor.c \
-				simulate/print_status.c \
+		simulate/one_philo.c \
+		simulate/philos.c \
+		simulate/monitor.c \
+		simulate/print_status.c \
 
 OBJS := $(SRCS:.c=.o)
 

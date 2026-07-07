@@ -23,7 +23,7 @@ static void	eating(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 }
 
-void	*philo(void *arg)
+void	*philos(void *arg)
 {
     t_philo	*philo;
 

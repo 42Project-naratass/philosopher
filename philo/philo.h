@@ -54,7 +54,8 @@ typedef enum	e_status
 
 // simulate
 int	    philo_simulate(t_data *data);
-void	*philo(void *arg);
+void	*one_philo(void *arg);
+void	*philos(void *arg);
 void    monitor(t_data *data);
 void	print_status(t_philo *philo, t_status mode, size_t timestamp);
 int     data_init(t_data *data, char *argv[], int argc);

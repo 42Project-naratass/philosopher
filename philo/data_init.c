@@ -37,6 +37,7 @@ int	data_init(t_data *data, char *argv[], int argc)
     data->time_eat = ft_atoi(argv[3]);
     data->time_sleep = ft_atoi(argv[4]);
     data->dead = false;
+	data->min_eat = -1;
     if (argc == 6)
     {
         if (!check_nums(argv[5]) && ft_atoi(argv[5]) < 1)
