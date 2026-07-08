@@ -50,7 +50,7 @@ static int	multiple_philos(t_data *data)
     return (1);
 }
 
-int	philo_simulate(t_data *data)
+void	philo_simulate(t_data *data)
 {
 	if (data->nums_philo == 1)
 	{

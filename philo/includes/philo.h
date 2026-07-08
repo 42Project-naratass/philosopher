@@ -64,7 +64,7 @@ typedef enum e_mode
 }	t_mode;
 
 // simulate
-int	    philo_simulate(t_data *data);
+void	philo_simulate(t_data *data);
 void    monitor(t_data *data);
 
 // parser

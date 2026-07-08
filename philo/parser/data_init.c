@@ -45,8 +45,6 @@ int	data_init(t_data *data, char *argv[], int argc)
         data->min_eat = ft_atoi(argv[5]);
     }
     if (!allocate(data))
-        return (1);
-    if (!mutex(data))
-        return (1);
-    return (0);
+		error_exit(EXIT_FAILURE, MALLOC_FAIL, NULL);
+	mutex(data);
 }
