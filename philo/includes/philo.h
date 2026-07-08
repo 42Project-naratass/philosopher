@@ -15,6 +15,7 @@ struct s_data;
 
 typedef struct	s_philo
 {
+	pthread_t		tid;
     struct s_data	*data;
     size_t          id;
     bool			eating;
@@ -60,7 +61,6 @@ typedef enum e_mode
 	DESTROY_MUTEX,
 	LOCK_MUTEX,
 	UNLOCK_MUTEX,
-
 }	t_mode;
 
 // simulate
@@ -79,7 +79,7 @@ void	*three_philo(void *arg);
 
 // message
 void	print_status(t_philo *philo, t_status mode, size_t timestamp);
-void	error_exit(int exit_code, char *msg, int fd, t_data *data);
+void	error_exit(int exit_code, char *msg, t_data *data);
 
 // time
 size_t  elapsed_time(size_t t0);

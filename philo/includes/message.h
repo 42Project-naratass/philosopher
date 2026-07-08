@@ -13,10 +13,11 @@
 
 # define MALLOC_FAIL "Error: Memory allocation failed.\n" 
 # define THREAD_CREATE_FAIL "Error: Thread creation failed.\n"
-# define TIME_FAIL "Error: Get time failed.\n"
+# define THREAD_JOIN_FAIL "Error: Thread join failed.\n"
 # define LOCK_FAIL "Error: Mutex lock failed.\n"  
 # define UNLOCK_FAIL "Error: Mutex unlock failed.\n"
-# define MUTEX_INIT_FAIL "Error: Mutex failed to inti.\n"
-# define 
+# define MUTEX_INIT_FAIL "Error: Mutex init failed.\n"
+# define MUTEX_DESTROY_FAIL "Error: Mutex destroy failed.\n"
+# define TIME_FAIL "Error: Get time failed.\n"
 
 #endif

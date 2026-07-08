@@ -5,6 +5,7 @@ static int  philo_init(t_data *data, t_philo *philo, size_t id)
     if (!philo)
         ft_exit(1);
     memset(philo, 0, sizeof(t_philo));
+	philo->tid = philo->data->tid[id - 1];
     philo->data = data;
     philo->id = id;
     philo->left_fork = &philo->data->forks[id - 1];
