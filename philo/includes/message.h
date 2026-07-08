@@ -11,6 +11,10 @@
 # define C "\033[1;36m"  // Cyan
 # define W "\033[1;37m"  // White
 
+# define INVALID_INPUT "Error: Invalid input.\n"
+# define INVALID_PHILO "Error: Philo nums can't be less than 1.\n"
+# define NOT_POSITIVE "Error: Can't be negative value.\n"
+# define HELP "Invalid usage: ./philo <1 - 500>\fnums_philo <"
 # define MALLOC_FAIL "Error: Memory allocation failed.\n" 
 # define THREAD_CREATE_FAIL "Error: Thread creation failed.\n"
 # define THREAD_JOIN_FAIL "Error: Thread join failed.\n"

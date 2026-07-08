@@ -1,12 +1,12 @@
 #include "includes/philo.h"
 
-static int input_checker(char *argv[])
+static bool input_checker(char *argv[])
 {
     if (!check_nums(argv[1]) || !check_nums(argv[2])
         || !check_nums(argv[3]) || !check_nums(argv[4]))
-        return (1);
+        error_exit(EXIT_FAILURE, INVALID_INPUT, NULL);
     if (ft_atoi(argv[1]) < 1)
-        return (1);
+		error_exit(EXIT_FAILURE, INVALID_PHILO, NULL);
     else
         return (0);
 }
@@ -17,7 +17,7 @@ int	main(int argc, char *argv[])
 
     if (argc != 5 && argc != 6)
         
-    if (input_checker(argv))
+    if (input_checker(argv) == false)
         ft_exit(1);
     if (data_init(&data, argv, argc))
         ft_exit(1);
