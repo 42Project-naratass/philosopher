@@ -95,5 +95,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_free(t_data *data);
 void    clear_data(t_data *data);
 void	philo_usleep(t_data *data, size_t time);
+void	thread_mode(t_philo *philo, void *(*f)(void *), t_mode mode, t_data *data);
+void	mutex_mode(pthread_mutex_t *mutex, t_mode mode, t_data *data)
 
 #endif
