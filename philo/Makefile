@@ -7,7 +7,6 @@ SRCS += action/philo_usleep.c \
 		action/simulate_stop.c \
 		action/one_philo.c \
 		action/two_philos.c \
-		action/three_philos.c \
 		action/routine.c \
 		action/philo_usleep.c \
 

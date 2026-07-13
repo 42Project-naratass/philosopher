@@ -2,27 +2,27 @@
 
 bool	is_dead(t_philo *philo)
 {
-    if (philo->eating == false && elapsed_time(philo->last_eat) >= philo->data->time_die)
-    {
-	    philo->data->dead = true;
-	    pthread_mutex_unlock(&philo->data->lock);
-	    print_status(philo, DIED, elapsed_time(philo->data->start_time));
-	    return (true);
-    }
-    return (false);
+	if (philo->eating == false && elapsed_time(philo->last_eat) >= philo->data->time_die)
+	{
+		philo->data->dead = true;
+		pthread_mutex_unlock(&philo->data->lock);
+		print_status(philo, DIED, elapsed_time(philo->data->start_time));
+		return (true);
+	}
+	return (false);
 }
 
-void  monitor(t_data *data)
+void	monitor(t_data *data)
 {
-    size_t	i;
-    bool	all_full;
+	size_t	i;
+	bool	all_full;
 
-    while (true)
-    {
+	while (true)
+	{
 		all_full = true;
-        i = 0;
-        while (i < data->nums_philo)
-        {
+		i = 0;
+		while (i < data->nums_philo)
+		{
 			pthread_mutex_lock(&data->lock);
 			if (is_dead(&data->philos[i]) == true)
 				return ;
@@ -38,5 +38,5 @@ void  monitor(t_data *data)
 			pthread_mutex_unlock(&data->lock);
 			i++;
 		}
-    }
+	}
 }
