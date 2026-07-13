@@ -11,7 +11,7 @@
 # include <string.h>
 # include "../includes/message.h"
 
-# define OP_TIME 200
+# define OP_TIME 50
 
 struct s_data;
 

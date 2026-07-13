@@ -5,7 +5,7 @@ static void	print_log(size_t timestamp, size_t id, char *status)
 	printf("%zu %zu %s\n", timestamp, id, status);
 }
 
-void  print_status(t_philo *philo, t_status mode, size_t timestamp)
+void	print_status(t_philo *philo, t_status mode, size_t timestamp)
 {
 	pthread_mutex_lock(&philo->data->print);
 	if (mode == DIED)
