@@ -11,8 +11,6 @@
 # include <string.h>
 # include "../includes/message.h"
 
-# define OP_TIME 50
-
 struct s_data;
 
 typedef struct	s_philo
@@ -77,7 +75,6 @@ bool	check_nums(char *str);
 bool	simulate_stop(t_data *data);
 void	*one_philo(void *arg);
 void	*two_philo(void *arg);
-void	*three_philo(void *arg);
 void	philo_usleep(t_data *data, size_t time);
 void	routine(t_philo *philo);
 
