@@ -17,7 +17,7 @@ typedef struct	s_philo
 {
 	pthread_t		tid;
 	struct s_data	*data;
-	size_t          id;
+	size_t			id;
 	bool			eating;
 	size_t			last_eat;
 	size_t			meals_eat;
@@ -65,7 +65,7 @@ typedef enum e_mode
 
 // simulate
 void	philo_simulate(t_data *data);
-void    monitor(t_data *data);
+void	monitor(t_data *data);
 
 // parser
 void	data_init(t_data *data, char *argv[], int argc);
@@ -83,18 +83,18 @@ void	print_status(t_philo *philo, t_status mode, size_t timestamp);
 void	error_exit(int exit_code, char *msg, t_data *data);
 
 // time
-size_t  elapsed_time(size_t t0);
+size_t	elapsed_time(size_t t0);
 size_t	get_time(void);
 
 // utils
 size_t	ft_strlen(char *s);
 void	ft_putstr_fd(char *str, int fd);
 int		ft_atoi(char *nptr);
-int  	is_digit(int c);
+int		is_digit(int c);
 bool	is_space(char c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_free(t_data *data);
-void    clear_data(t_data *data);
+void	clear_data(t_data *data);
 void	thread_mode(t_philo *philo, void *(*f)(void *), t_mode mode, t_data *data);
 void	mutex_mode(pthread_mutex_t *mutex, t_mode mode, t_data *data);
 
