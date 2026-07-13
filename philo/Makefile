@@ -1,22 +1,23 @@
 NAME := philo
 DEBUG := philo_debug
 
-SRCS := main.c \
-		data_init.c
+SRCS := main.c
 
-SRCS := action/philo_usleep.c \
+SRCS += action/philo_usleep.c \
 		action/simulate_stop.c \
 		action/one_philo.c \
 		action/two_philos.c \
 		action/three_philos.c \
+		action/routine.c \
+		action/philo_usleep.c \
 
-SRCS := parser/data_init.c \
+SRCS += parser/data_init.c \
 		parser/check_nums.c \
 
-SRCS := time/elapsed_time.c \
+SRCS += time/elapsed_time.c \
 		time/get_time.c \
 
-SRCS :=	message/print_status.c \
+SRCS +=	message/print_status.c \
 		message/error_exit.c \
 
 SRCS += utils/ft_strlen.c \
@@ -25,9 +26,8 @@ SRCS += utils/ft_strlen.c \
 		utils/is_digit.c \
 		utils/is_space.c \
 		utils/ft_memcpy.c \
-		utils/ft_free.c \
-		utils/clear_data.c \
-		utils/philo_usleep.c \
+		utils/mutex_mode.c \
+		utils/thread_mode.c \
 
 SRCS += simulate/monitor.c \
 		simulate/philo_simulate.c \
@@ -40,15 +40,15 @@ OBJS := $(SRCS:.c=.o)
 CFLAGS := -Wall -Werror -Wextra
 DFLAGS := -g3 -pthread 
 
-INCLUDE = -I /includes
+INCLUDE = -I ./includes/
 
 %.o: %.c
-	cc -c $(CFLAGS) $< -o $@
+	cc -c $(CFLAGS) $(INCLUDE) $< -o $@
 
-$(NAME): $(OBJS) | philo.h err.h
+$(NAME): $(OBJS)
 	cc $(CFLAGS) $(INCLUDE) $^ -o $@
 
-$(DEBUG): $(OBJS) | philo.h err.h
+$(DEBUG): $(OBJS)
 	cc $(CFLAGS) $(DFLAGS) $(INCLUDE) $^ -o $@
 
 all: $(NAME)
@@ -63,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
