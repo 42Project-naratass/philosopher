@@ -6,7 +6,7 @@ static void	input_checker(char *argv[])
         || !check_nums(argv[3]) || !check_nums(argv[4]))
         error_exit(EXIT_FAILURE, INVALID_INPUT, NULL);
     if (ft_atoi(argv[1]) < 1)
-		error_exit(EXIT_FAILURE, INVALID_PHILO, NULL);
+	error_exit(EXIT_FAILURE, INVALID_PHILO, NULL);
 }
 
 int	main(int argc, char *argv[])

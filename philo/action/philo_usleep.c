@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "../includes/philo.h"
 
 void	philo_usleep(t_data *data, size_t time)
 {	

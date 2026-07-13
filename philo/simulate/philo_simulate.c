@@ -2,57 +2,54 @@
 
 static void	philo_init(t_data *data, t_philo *philo, size_t id)
 {
-    if (!philo)
-        ft_exit(1);
     memset(philo, 0, sizeof(t_philo));
-	philo->tid = philo->data->tid[id - 1];
+    philo->tid = philo->data->tid[id - 1];
     philo->data = data;
     philo->id = id;
     philo->left_fork = &philo->data->forks[id - 1];
     philo->right_fork = &philo->data->forks[id % philo->data->nums_philo];
     if (!philo->left_fork || !philo->right_fork)
-		error_exit(EXIT_FAILURE, INIT_FORK_PHILO_FAIL, data);
+	error_exit(EXIT_FAILURE, INIT_FORK_PHILO_FAIL, data);
     philo->last_eat = get_time();
 }
 
 static void	sole_philo(t_data *data)
 {
-	data->start_time = get_time();
-	philo_init(data, &data->philos[0], 1);
-	thread_mode(&data->philos[0], one_philo, CREATE_THREAD, data);
-	thread_mode(&data->philos[0], NULL, JOIN_THREAD, NULL);
-	clear_data(data);
+    data->start_time = get_time();
+    philo_init(data, &data->philos[0], 1);
+    thread_mode(&data->philos[0], one_philo, CREATE_THREAD, data);
+    thread_mode(&data->philos[0], NULL, JOIN_THREAD, NULL);
+    clear_data(data);
 }
 
-static void	multiple_philos(t_data *data, void *(*routine)(void))
+static void	multiple_philos(t_data *data, void *(*f)(void *))
 {
-    size_t		i;
+    size_t	i;
 
     i = 0;
     data->start_time = get_time();
     while (i < data->nums_philo)
     {
         philo_init(data, &data->philos[i], i + 1);
-		thread_mode(&data->philos[i], routine, CREATE_THREAD, data);
+	thread_mode(&data->philos[i], f, CREATE_THREAD, data);
         i++;
     }
     monitor(data);
-	i = 0;
-	while (i < data->nums_philo)
-		pthread_join(data->tid[i++], NULL);
+    i = 0;
+    while (i < data->nums_philo)
+	pthread_join(data->tid[i++], NULL);
     clear_data(data);
-    return (1);
 }
 
 void	philo_simulate(t_data *data)
 {
-	if (data->nums_philo == 1)
-		sole_philo(data);
+    if (data->nums_philo == 1)
+	sole_philo(data);
+    else
+    {
+	if (data->nums_philo % 2 == 0)
+	    multiple_philos(data, two_philo);
 	else
-	{
-		if (data->nums_philo % 2 == 0)
-			multiple_philos(data, two_philo);
-		else
-			multiple_philos(data, three_philo);
-	}
+	    multiple_philos(data, three_philo);
+    }
 }

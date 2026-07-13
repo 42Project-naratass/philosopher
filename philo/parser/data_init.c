@@ -10,41 +10,41 @@ static int allocate(t_data *data)
     if (!data->forks)
         return (1);
     data->philos = (t_philo *) malloc(sizeof(t_philo) * data->nums_philo);
+    if (data->philos)
         return (1);
     return (0);
 }
 
-static int mutex(t_data *data)
+static void	mutex(t_data *data)
 {
     size_t i;
 
     i = 0;
     while (i < data->nums_philo)
     {
-        pthread_mutex_init(&data->forks[i], NULL);
+	mutex_mode(&data->forks[i], INIT_MUTEX, data);
         i++;
     }
-    pthread_mutex_init(&data->print, NULL);
-	pthread_mutex_init(&data->lock, NULL);
-	pthread_mutex_init(&data->stop_lock, NULL);
-    return (1);
+    mutex_mode(&data->print, INIT_MUTEX, data);
+    mutex_mode(&data->lock, INIT_MUTEX, data);
+    mutex_mode(&data->stop_lock, INIT_MUTEX, data);
 }
 
-int	data_init(t_data *data, char *argv[], int argc)
-{	
+void	data_init(t_data *data, char *argv[], int argc)
+{
     data->nums_philo = ft_atoi(argv[1]);
     data->time_die = ft_atoi(argv[2]);
     data->time_eat = ft_atoi(argv[3]);
     data->time_sleep = ft_atoi(argv[4]);
     data->dead = false;
-	data->min_eat = -1;
+    data->min_eat = -1;
     if (argc == 6)
     {
         if (!check_nums(argv[5]) && ft_atoi(argv[5]) < 1)
-            return (1);
+            error_exit(EXIT_FAILURE, INVALID_INPUT, NULL);
         data->min_eat = ft_atoi(argv[5]);
     }
     if (!allocate(data))
-		error_exit(EXIT_FAILURE, MALLOC_FAIL, NULL);
-	mutex(data);
+	error_exit(EXIT_FAILURE, MALLOC_FAIL, NULL);
+    mutex(data);
 }
