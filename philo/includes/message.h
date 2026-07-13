@@ -24,5 +24,6 @@
 # define MUTEX_DESTROY_FAIL "Error: Mutex destroy failed.\n"
 # define TIME_FAIL "Error: Get time failed.\n"
 # define INIT_FORK_PHILO_FAIL "Error: Philo init fork fail.\n"
+# define INIT_PHILO_FAIL "Error: Philo faile to init.\n"
 
 #endif

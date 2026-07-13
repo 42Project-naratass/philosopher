@@ -38,7 +38,7 @@ SRCS += clean_up/ft_free.c \
 OBJS := $(SRCS:.c=.o)
 
 CFLAGS := -Wall -Werror -Wextra
-DFLAGS := -g -fsanitize=address,undefined
+DFLAGS := -g -fsanitize=address -fsanitize=undefined -pthread
 
 INCLUDE = -I ./includes/
 

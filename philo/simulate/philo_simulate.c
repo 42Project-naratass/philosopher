@@ -2,14 +2,16 @@
 
 static void	philo_init(t_data *data, t_philo *philo, size_t id)
 {
+	if (!philo)
+		error_exit(EXIT_FAILURE, INIT_PHILO_FAIL, data);
     memset(philo, 0, sizeof(t_philo));
-    philo->tid = philo->data->tid[id - 1];
+    philo->tid = data->tid[id - 1];
     philo->data = data;
-    philo->id = id;
+    philo->id = id;	
     philo->left_fork = &philo->data->forks[id - 1];
     philo->right_fork = &philo->data->forks[id % philo->data->nums_philo];
     if (!philo->left_fork || !philo->right_fork)
-	error_exit(EXIT_FAILURE, INIT_FORK_PHILO_FAIL, data);
+		error_exit(EXIT_FAILURE, INIT_FORK_PHILO_FAIL, data);
     philo->last_eat = get_time();
 }
 
@@ -31,25 +33,25 @@ static void	multiple_philos(t_data *data, void *(*f)(void *))
     while (i < data->nums_philo)
     {
         philo_init(data, &data->philos[i], i + 1);
-	thread_mode(&data->philos[i], f, CREATE_THREAD, data);
+		thread_mode(&data->philos[i], f, CREATE_THREAD, data);
         i++;
     }
     monitor(data);
     i = 0;
     while (i < data->nums_philo)
-	pthread_join(data->tid[i++], NULL);
+		thread_mode(&data->philos[i++], NULL, JOIN_THREAD, data);
     clear_data(data);
 }
 
 void	philo_simulate(t_data *data)
 {
     if (data->nums_philo == 1)
-	sole_philo(data);
+		sole_philo(data);
     else
     {
-	if (data->nums_philo % 2 == 0)
-	    multiple_philos(data, two_philo);
-	else
-	    multiple_philos(data, three_philo);
+		if (data->nums_philo % 2 == 0)
+			multiple_philos(data, two_philo);
+		else
+			multiple_philos(data, three_philo);
     }
 }

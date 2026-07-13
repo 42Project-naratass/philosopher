@@ -19,10 +19,10 @@ typedef struct	s_philo
 {
     pthread_t		tid;
     struct s_data	*data;
-    size_t          	id;
-    bool		eating;
-    size_t		last_eat;
-    size_t		meals_eat;
+    size_t          id;
+    bool			eating;
+    size_t			last_eat;
+    size_t			meals_eat;
     pthread_mutex_t	*left_fork;
     pthread_mutex_t	*right_fork;
 }	t_philo;
@@ -30,7 +30,7 @@ typedef struct	s_philo
 typedef struct	s_data
 {
     t_philo		*philos;
-    pthread_t		*tid;
+    pthread_t	*tid;
     size_t		nums_philo;
     size_t		time_die;
     size_t		time_eat;
@@ -40,7 +40,7 @@ typedef struct	s_data
     size_t		start_time;
     bool		dead;
     pthread_mutex_t	*forks;
-    pthread_mutex_t print;
+    pthread_mutex_t 	print;
     pthread_mutex_t	lock;
     pthread_mutex_t	stop_lock;
 }	t_data;
@@ -92,7 +92,7 @@ size_t	get_time(void);
 // utils
 size_t	ft_strlen(char *s);
 void	ft_putstr_fd(char *str, int fd);
-int	ft_atoi(char *nptr);
+int		ft_atoi(char *nptr);
 int  	is_digit(int c);
 bool	is_space(char c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

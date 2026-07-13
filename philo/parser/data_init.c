@@ -22,7 +22,7 @@ static void	mutex(t_data *data)
     i = 0;
     while (i < data->nums_philo)
     {
-	mutex_mode(&data->forks[i], INIT_MUTEX, data);
+		mutex_mode(&data->forks[i], INIT_MUTEX, data);
         i++;
     }
     mutex_mode(&data->print, INIT_MUTEX, data);
@@ -45,6 +45,7 @@ void	data_init(t_data *data, char *argv[], int argc)
         data->min_eat = ft_atoi(argv[5]);
     }
     if (!allocate(data))
-	error_exit(EXIT_FAILURE, MALLOC_FAIL, NULL);
+		error_exit(EXIT_FAILURE, MALLOC_FAIL, NULL);
     mutex(data);
 }
+

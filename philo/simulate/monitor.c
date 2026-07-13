@@ -1,6 +1,4 @@
 #include "../includes/philo.h"
-#include <stddef.h>
-#include <stdio.h>
 
 bool	is_dead(t_philo *philo)
 {
@@ -25,20 +23,20 @@ void  monitor(t_data *data)
         i = 0;
         while (i < data->nums_philo)
         {
-	    pthread_mutex_lock(&data->lock);
-	    if (is_dead(&data->philos[i]) == true)
-		return ;
-	    if (data->philos[i].meals_eat < data->min_eat)
-		    all_full = false;
-	    if (data->min_eat > 0 && all_full == true)
-	    {
-		data->dead = true;
-		mutex_mode(&data->lock, UNLOCK_MUTEX, data);
-		pthread_mutex_unlock(&data->lock);
-		return ;
-	    }
-	    pthread_mutex_unlock(&data->lock);
-            i++;
-	}
+			pthread_mutex_lock(&data->lock);
+			if (is_dead(&data->philos[i]) == true)
+				return ;
+			if (data->philos[i].meals_eat < data->min_eat)
+				all_full = false;
+			if (data->min_eat > 0 && all_full == true)
+			{
+				data->dead = true;
+				mutex_mode(&data->lock, UNLOCK_MUTEX, data);
+				pthread_mutex_unlock(&data->lock);
+				return ;
+			}
+			pthread_mutex_unlock(&data->lock);
+			i++;
+		}
     }
 }
