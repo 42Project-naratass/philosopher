@@ -11,6 +11,9 @@
 # include <string.h>
 # include "../includes/message.h"
 
+# define MIN_TIME 60
+# define MIN_PHILO 1
+
 struct s_data;
 
 typedef struct	s_philo

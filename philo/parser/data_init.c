@@ -36,6 +36,11 @@ void	data_init(t_data *data, char *argv[], int argc)
     data->time_die = ft_atoi(argv[2]);
     data->time_eat = ft_atoi(argv[3]);
     data->time_sleep = ft_atoi(argv[4]);
+	if (data->time_die < MIN_TIME || data->time_eat < MIN_TIME
+		|| data->time_sleep < MIN_TIME)
+		error_exit(EXIT_FAILURE, INVALID_TIME, NULL);
+	if (data->nums_philo < MIN_PHILO)
+		error_exit(EXIT_FAILURE, INVALID_PHILO, NULL);
     data->dead = false;
     data->min_eat = -1;
     if (argc == 6)
