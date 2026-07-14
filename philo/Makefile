@@ -4,9 +4,8 @@ DEBUG := philo_debug
 SRCS := main.c
 
 SRCS += action/philo_usleep.c \
-		action/simulate_stop.c \
 		action/one_philo.c \
-		action/two_philos.c \
+		action/philos.c \
 		action/routine.c \
 		action/philo_usleep.c \
 
@@ -27,6 +26,7 @@ SRCS += utils/ft_strlen.c \
 		utils/ft_memcpy.c \
 		utils/mutex_mode.c \
 		utils/thread_mode.c \
+		utils/simulate_stop.c \
 
 SRCS += simulate/monitor.c \
 		simulate/philo_simulate.c \

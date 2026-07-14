@@ -1,6 +1,6 @@
 #include "../includes/philo.h"
 
-void	*two_philo(void *arg)
+void	*philos(void *arg)
 {
 	t_philo	*philo;
 

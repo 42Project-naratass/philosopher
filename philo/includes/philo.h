@@ -74,7 +74,7 @@ bool	check_nums(char *str);
 // action
 bool	simulate_stop(t_data *data);
 void	*one_philo(void *arg);
-void	*two_philo(void *arg);
+void	*philos(void *arg);
 void	philo_usleep(t_data *data, size_t time);
 void	routine(t_philo *philo);
 

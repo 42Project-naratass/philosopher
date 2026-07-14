@@ -29,7 +29,7 @@ static void	sole_philo(t_data *data)
 	clear_data(data);
 }
 
-static void	multiple_philos(t_data *data, void *(*f)(void *))
+static void	multiple_philos(t_data *data)
 {
 	size_t	i;
 
@@ -38,7 +38,7 @@ static void	multiple_philos(t_data *data, void *(*f)(void *))
 	while (i < data->nums_philo)
 	{
 		philo_init(data, &data->philos[i], i + 1);
-		thread_mode(&data->philos[i], f, CREATE_THREAD, data);
+		thread_mode(&data->philos[i], philos, CREATE_THREAD, data);
 		i++;
 	}
 	monitor(data);
@@ -53,5 +53,5 @@ void	philo_simulate(t_data *data)
 	if (data->nums_philo == 1)
 		sole_philo(data);
 	else
-		multiple_philos(data, two_philo);
+		multiple_philos(data);
 }
