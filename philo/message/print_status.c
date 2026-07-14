@@ -24,9 +24,9 @@ void	print_status(t_philo *philo, t_status mode)
 		print_log(timestamp, philo->id, C "is eating" RST);
 	else if (mode == THINKING)
 		print_log(timestamp, philo->id, G "is thinking" RST);
-	else if (mode == GET_LEFT_FORK)
+	else if (mode == GET_FORK_1)
 		print_log(timestamp, philo->id, BK "has taken a fork" RST);
-	else if (mode == GET_RIGHT_FORK)
+	else if (mode == GET_FORK_2)
 		print_log(timestamp, philo->id, BK "has taken a fork" RST);
 	pthread_mutex_unlock(&philo->data->print);
 }

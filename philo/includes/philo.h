@@ -21,8 +21,8 @@ typedef struct	s_philo
 	bool			eating;
 	size_t			last_eat;
 	size_t			meals_eat;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*fork1;
+	pthread_mutex_t	*fork_2;
 }	t_philo;
 
 typedef struct	s_data
@@ -49,8 +49,8 @@ typedef enum	e_status
 	EATING,
 	SLEEPING,
 	THINKING,
-	GET_LEFT_FORK,
-	GET_RIGHT_FORK,
+	GET_FORK_1,
+	GET_FORK_2,
 }	t_status;
 
 typedef enum e_mode

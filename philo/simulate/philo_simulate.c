@@ -8,14 +8,14 @@ static void	philo_init(t_data *data, t_philo *philo, size_t id)
 	philo->tid = data->tid[id - 1];
 	philo->data = data;
 	philo->id = id;
-	philo->left_fork = &philo->data->forks[id - 1];
-	philo->right_fork = &philo->data->forks[id % philo->data->nums_philo];
+	philo->fork1 = &philo->data->forks[id - 1];
+	philo->fork_2 = &philo->data->forks[id % philo->data->nums_philo];
 	if (philo->id % 2 == 0)
 	{
-		philo->right_fork = &philo->data->forks[id - 1];
-		philo->left_fork = &philo->data->forks[id % philo->data->nums_philo];
+		philo->fork_2 = &philo->data->forks[id - 1];
+		philo->fork1 = &philo->data->forks[id % philo->data->nums_philo];
 	}
-	if (!philo->left_fork || !philo->right_fork)
+	if (!philo->fork1 || !philo->fork_2)
 		error_exit(EXIT_FAILURE, INIT_FORK_PHILO_FAIL, data);
 	philo->last_eat = get_time();
 }
