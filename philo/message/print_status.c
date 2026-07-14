@@ -19,9 +19,9 @@ void	print_status(t_philo *philo, t_status mode)
 		return ;
 	}
 	if (mode == SLEEPING)
-		print_log(timestamp, philo->id, M "is sleeping" RST);
+		print_log(timestamp, philo->id, C "is sleeping" RST);
 	else if (mode == EATING)
-		print_log(timestamp, philo->id, C "is eating" RST);
+		print_log(timestamp, philo->id, M "is eating" RST);
 	else if (mode == THINKING)
 		print_log(timestamp, philo->id, G "is thinking" RST);
 	else if (mode == GET_FORK_1)
