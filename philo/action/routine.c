@@ -3,10 +3,10 @@
 void	routine(t_philo *philo)
 {
 	mutex_mode(philo->left_fork, LOCK_MUTEX, philo->data);
-	print_status(philo, GET_LEFT_FORK, elapsed_time(philo->data->start_time));
+	print_status(philo, GET_LEFT_FORK);
 	mutex_mode(philo->right_fork, LOCK_MUTEX, philo->data);
-	print_status(philo, GET_RIGHT_FORK, elapsed_time(philo->data->start_time));
-	print_status(philo, EATING, elapsed_time(philo->data->start_time));
+	print_status(philo, GET_RIGHT_FORK);
+	print_status(philo, EATING);
 	mutex_mode(&philo->data->lock, LOCK_MUTEX, philo->data);
 	philo->eating = true;
 	mutex_mode(&philo->data->lock, UNLOCK_MUTEX, philo->data);
@@ -19,7 +19,7 @@ void	routine(t_philo *philo)
 	philo->eating = false;
 	philo->last_eat = get_time();
 	mutex_mode(&philo->data->lock, UNLOCK_MUTEX, philo->data);
-	print_status(philo, SLEEPING, elapsed_time(philo->data->start_time));
+	print_status(philo, SLEEPING);
 	usleep(philo->data->time_sleep * 1000);
-	print_status(philo, THINKING, elapsed_time(philo->data->start_time));
+	print_status(philo, THINKING);
 }

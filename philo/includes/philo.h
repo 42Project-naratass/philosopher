@@ -79,7 +79,7 @@ void	philo_usleep(t_data *data, size_t time);
 void	routine(t_philo *philo);
 
 // message
-void	print_status(t_philo *philo, t_status mode, size_t timestamp);
+void	print_status(t_philo *philo, t_status mode);
 void	error_exit(int exit_code, char *msg, t_data *data);
 
 // time

@@ -6,7 +6,7 @@ bool	is_dead(t_philo *philo)
 	{
 		philo->data->dead = true;
 		pthread_mutex_unlock(&philo->data->lock);
-		print_status(philo, DIED, elapsed_time(philo->data->start_time));
+		print_status(philo, DIED);
 		return (true);
 	}
 	return (false);
