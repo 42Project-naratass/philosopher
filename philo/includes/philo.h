@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/03 23:04:04 by naratass          #+#    #+#             */
+/*   Updated: 2026/09/03 23:07:23 by naratass         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
-#include <stddef.h>
+# include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
@@ -14,9 +26,9 @@
 # define MIN_TIME 60
 # define MIN_PHILO 1
 
-struct s_data;
+struct	s_data;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		tid;
 	struct s_data	*data;
@@ -28,25 +40,25 @@ typedef struct	s_philo
 	pthread_mutex_t	*fork_2;
 }	t_philo;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	t_philo		*philos;
-	pthread_t	*tid;
-	size_t		nums_philo;
-	size_t		time_die;
-	size_t		time_eat;
-	size_t		time_sleep;
-	size_t		min_eat;
-	size_t		times_eat;
-	size_t		start_time;
-	bool		dead;
+	t_philo			*philos;
+	pthread_t		*tid;
+	size_t			nums_philo;
+	size_t			time_die;
+	size_t			time_eat;
+	size_t			time_sleep;
+	size_t			min_eat;
+	size_t			times_eat;
+	size_t			start_time;
+	bool			dead;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t 	print;
+	pthread_mutex_t	print;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	stop_lock;
 }	t_data;
 
-typedef enum	e_status
+typedef enum e_status
 {
 	DIED,
 	EATING,
@@ -98,7 +110,8 @@ bool	is_space(char c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_free(t_data *data);
 void	clear_data(t_data *data);
-void	thread_mode(t_philo *philo, void *(*f)(void *), t_mode mode, t_data *data);
+void	thread_mode(t_philo *philo, void *(*f)(void *),
+			t_mode mode, t_data *data);
 void	mutex_mode(pthread_mutex_t *mutex, t_mode mode, t_data *data);
 
 #endif

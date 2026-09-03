@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/03 22:10:09 by naratass          #+#    #+#             */
+/*   Updated: 2026/09/03 22:39:19 by naratass         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 bool	is_dead(t_philo *philo)
 {
-	if (philo->eating == false && elapsed_time(philo->last_eat) >= philo->data->time_die)
+	if (philo->eating == false
+		&& elapsed_time(philo->last_eat) >= philo->data->time_die)
 	{
 		philo->data->dead = true;
 		pthread_mutex_unlock(&philo->data->lock);

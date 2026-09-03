@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread_mode.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/03 22:54:39 by naratass          #+#    #+#             */
+/*   Updated: 2026/09/03 22:55:05 by naratass         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
-void	thread_mode(t_philo *philo, void *(*f)(void *), t_mode mode, t_data *data)
+void	thread_mode(t_philo *philo, void *(*f)(void *),
+		t_mode mode, t_data *data)
 {
 	if (mode == CREATE_THREAD)
 	{
