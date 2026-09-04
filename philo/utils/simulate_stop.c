@@ -6,7 +6,7 @@
 /*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 22:55:23 by naratass          #+#    #+#             */
-/*   Updated: 2026/09/03 22:55:24 by naratass         ###   ########.fr       */
+/*   Updated: 2026/09/04 23:31:41 by naratass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 bool	simulate_stop(t_data *data)
 {
-	pthread_mutex_lock(&data->lock);
+	mutex_mode(&data->lock, LOCK_MUTEX, data);
 	if (data->dead == true)
 	{
-		pthread_mutex_unlock(&data->lock);
+		mutex_mode(&data->lock, UNLOCK_MUTEX, data);
 		return (true);
 	}
 	pthread_mutex_unlock(&data->lock);

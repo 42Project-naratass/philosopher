@@ -6,7 +6,7 @@
 /*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 22:10:09 by naratass          #+#    #+#             */
-/*   Updated: 2026/09/03 22:39:19 by naratass         ###   ########.fr       */
+/*   Updated: 2026/09/04 23:30:02 by naratass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	is_dead(t_philo *philo)
 		&& elapsed_time(philo->last_eat) >= philo->data->time_die)
 	{
 		philo->data->dead = true;
-		pthread_mutex_unlock(&philo->data->lock);
+		mutex_mode(&data->lock, UNLOCK_MUTEX, data);
 		print_status(philo, DIED);
 		return (true);
 	}
@@ -36,19 +36,18 @@ void	monitor(t_data *data)
 		i = 0;
 		while (i < data->nums_philo)
 		{
-			pthread_mutex_lock(&data->lock);
+			mutex_mode(&data->lock, LOCK_MUTEX, data);
 			if (is_dead(&data->philos[i]) == true)
 				return ;
 			if (data->philos[i++].meals_eat < data->min_eat)
 				all_full = false;
-			pthread_mutex_unlock(&data->lock);
+			mutex_mode(&data->lock, UNLOCK_MUTEX, data);
 		}
 		if (data->min_eat > 0 && all_full == true)
 		{
-			pthread_mutex_lock(&data->lock);
+			mutex_mode(&data->lock, LOCK_MUTEX, data);
 			data->dead = true;
 			mutex_mode(&data->lock, UNLOCK_MUTEX, data);
-			pthread_mutex_unlock(&data->lock);
 			return ;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: naratass <naratass@student.42Bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 23:08:04 by naratass          #+#    #+#             */
-/*   Updated: 2026/09/03 23:08:32 by naratass         ###   ########.fr       */
+/*   Updated: 2026/09/04 23:33:00 by naratass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	print_status(t_philo *philo, t_status mode)
 {
 	size_t	timestamp;
 
-	pthread_mutex_lock(&philo->data->print);
+	mutex_mode(&data->lock, LOCK_MUTEX, data);
 	timestamp = elapsed_time(philo->data->start_time);
 	if (mode == DIED)
 		print_log(timestamp, philo->id, R "died" RST);
 	if (simulate_stop(philo->data) == true)
 	{
-		pthread_mutex_unlock(&philo->data->print);
+		mutex_mode(&data->lock, UNLOCK_MUTEX, data);
 		return ;
 	}
 	if (mode == SLEEPING)
@@ -40,5 +40,5 @@ void	print_status(t_philo *philo, t_status mode)
 		print_log(timestamp, philo->id, BK "has taken a fork" RST);
 	else if (mode == GET_FORK_2)
 		print_log(timestamp, philo->id, BK "has taken a fork" RST);
-	pthread_mutex_unlock(&philo->data->print);
+	mutex_mode(&data->lock, UNLOCK_MUTEX, data);
 }
